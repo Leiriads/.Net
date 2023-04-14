@@ -1,12 +1,13 @@
 # .Net
 
-:books: Contato tron é um app para gerenciar seus contatos <br> <br>
-🌿 Tecnologias Utilizadas : 🌿<br>
+:books: Contato-Tron é um app para gerenciar seus contatos <br> <br>
+🌿 Tecnologias Utilizadas :<br>
 🌿 C#  <br>
 🌿 HTML <br>
 🌿 Bootstrap  <br>
 🌿 .Net  <br>
 🌿 SQL
+
 
 :sparkles: Add Botões na aba Contatos
 
