@@ -1,36 +1,68 @@
 ﻿@{
     ViewData["Title"] = "Lista de Contatos";
 }
+<div class="text-center">
 
-<h1 class="display-4">Lista de Contatos</h1>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start"> <!-- justificar a esquerda bootstrap-->
+        <a class="btn btn-primary" role="button">Adicionar Novo Contato</a>
+    </div>
 
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Gabriel</td>
-            <td>gabriel@gmail.com</td>
-            <td>41 9 1234-4321</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton@gmail.com</td>
-            <td>11 9 1234-4321</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Ana</td>
-            <td>aninha@gmail.com</td>
-            <td>65 9 1234-4321</td>
-        </tr>
-    </tbody>
-</table>
+  
+
+    <h1 class="display-4">Lista de Contatos</h1>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Gabriel</td>
+                <td>gabriel@gmail.com</td>
+                <td>41 9 1234-4321</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Editar</a>
+                        <a role="button" class="btn btn-danger">Excluir</a>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton@gmail.com</td>
+                <td>11 9 1234-4321</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Editar</a>
+                        <a role="button" class="btn btn-danger">Excluir</a>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Ana</td>
+                <td>aninha@gmail.com</td>
+                <td>65 9 1234-4321</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary">Editar</a>
+                        <a role="button" class="btn btn-danger">Excluir</a>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
