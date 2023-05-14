@@ -1,0 +1,104 @@
+﻿@page
+@using MVC.dbc;
+@model MVCIFPR.Pages.User.IndexModel
+@{
+    var connectionFactory = new ConnectionFactory();
+    bool isConnected = false;
+
+    try
+    {
+        using var connection = connectionFactory.GetConnection();
+        connection.Open();
+        isConnected = true;
+    }
+    catch
+    {
+        isConnected = false;
+    }
+}
+
+<div class="text-center">
+    <h2>Lista de Usuários</h2>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-primary btn-sm" href="/User/Create">Novo Usuario</a>
+    </div>
+    <div class="col-md-6">
+        <form method="get">
+            <div class="form-group row">
+                <div class="col-md-8">
+                    <input type="text" name="q" class="form-control" placeholder="Pesquisar por Nome ou CPF" value="@Request.Query["q"]" />
+                </div>
+                <div class="col-md-4 d-flex align-items-center justify-content-end">
+                    <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <a href="/User/Index" class="btn btn-secondary ml-2 custom-margin">Limpar</a>
+                </div>
+            </div>
+        </form>
+        <style>
+            .custom-margin {
+                margin-left: 26px;
+            }
+        </style>
+    </div>
+</div>
+
+<br />
+
+
+
+
+
+
+
+<div class="text-center">
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cpf</th>
+                <th>Tipo de Usuário</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listUsers.Where(u => string.IsNullOrEmpty(Request.Query["q"]) || u.Nome.Contains(Request.Query["q"]) || u.Cpf.Contains(Request.Query["q"])))
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Nome</td>
+                    <td>@item.Cpf</td>
+                    <td>@item.TipoUsuario</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/User/Edit?id=@item.Id">Editar</a>
+                        <a class="btn btn-danger btn-sm" href="/User/Delete?id=@item.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@if (isConnected)
+{
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        O banco de dados não está conectado!
+    </div>
+
+}
+<style>
+    .alert {
+        position: fixed;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0 15px 15px 15px;
+        width: 70%;
+    }
+</style>

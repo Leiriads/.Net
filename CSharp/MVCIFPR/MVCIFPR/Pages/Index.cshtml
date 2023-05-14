@@ -1,0 +1,104 @@
+﻿@page
+@using MVC.dbc;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+    var connectionFactory = new ConnectionFactory();
+    bool isConnected = false;
+
+    try
+    {
+        using var connection = connectionFactory.GetConnection();
+        connection.Open();
+        isConnected = true;
+    }
+    catch
+    {
+        isConnected = false;
+    }
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Bem Vindo</h1>
+    <p>Controle de Usuários</p>
+    <br />
+
+   
+    
+
+    <h4 class="github-link">Aplicação Web Utilizando MVC! </h4>
+    <p class="github-link" >Desenvolvido por :</p>
+
+    <a href="https://github.com/leiriads" class="github-link"> Leiriads.</a>
+        <br />
+    <a href="https://github.com/leiriads" class="github-logo">
+        <img src="https://github.com/fluidicon.png" alt="Logo do Github">
+    </a>
+        <br />
+    @if (isConnected)
+    {
+        <div class="alert alert-success" role="alert">
+            O banco de dados está conectado!
+        </div>
+        
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            O banco de dados não está conectado!
+        </div>
+       
+    }
+    <style>
+        .alert {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0 15px 15px 15px;
+            width:70%;
+        }
+    </style>
+
+        
+            
+        
+
+    <style>
+        .github-logo img {
+            width: 130px;
+            height: 130px;
+            transition: transform 0.5s;
+        }
+
+        .github-logo:hover img {
+          
+            transform: rotate(360deg);
+            transition: transform 1.5s ease-in-out;
+        }
+
+        .github-link {
+            font-family: "Helvetica Neue", sans-serif;
+        }
+
+        .github-link:hover {
+            color: green;
+           
+            
+        }
+
+        a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+
+
+
+</div>
+
+   
+	
+

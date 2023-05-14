@@ -1,0 +1,91 @@
+﻿@page
+@model MVCIFPR.Pages.User.EditModel
+@{
+}
+<br />
+<h2>Editar Usuário</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dimissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+    <form method="POST">
+    <input type="hidden" name="id" value="@Model.userinfo.Id" />
+    
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nome </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Insira o Nome do Usuário" name="nome" value="@Model.userinfo.Nome">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Cpf </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="Insira o Cpf do Usuário" name="cpf" value="@Model.userinfo.Cpf">
+        </div>
+    </div>
+
+   <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Tipo de Usuário </label>
+    <div class="col-sm-6">
+        <select class="form-control" id="filtro-data" name="TipoUsuario">
+                <option value="visitante" selected="@((Model.userinfo.TipoUsuario == "visitante") ? "selected" : null)">Visitante</option>
+                <option value="aluno" selected="@((Model.userinfo.TipoUsuario == "aluno") ? "selected" : null)">Aluno</option>
+                <option value="professor" selected="@((Model.userinfo.TipoUsuario == "professor") ? "selected" : null)">Professor</option>
+
+        </select>
+    </div>
+</div>
+
+    
+
+    @if (Model.successMessage.Length > 0)
+    {
+
+
+
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dimissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            setTimeout(function () {
+                Swal.fire({
+                    title: 'Usuário Alterado Redirecionando...',
+                    icon: 'success',
+                    timer: 3000,
+                    timerProgressBar: true
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
+                        window.location.replace('/User/Index');
+                    }
+                });
+            }, 100);
+        </script>
+    }
+
+
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-danger" href="/" role="button">Cancelar</a>
+        </div>
+
+    </div>
+</form>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
