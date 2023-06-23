@@ -1,0 +1,120 @@
+﻿@page
+@model MVCIFPR.Pages.User.CreateModel
+@{
+}
+<br />
+
+<h2>Nova Questão</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dimissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+
+    <br />
+    <br />
+
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Enunciado</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Insira o Enunciado da Questão" name="enunciado" value="@Model.questao.Pergunta"></textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">A</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Opção A" name="opcA" value="@Model.questao.OpcA"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">B</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Opção B" name="opcB" value="@Model.questao.OpcB"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">C</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Opção C" name="opcC" value="@Model.questao.OpcC"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">D</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Opção D" name="opcD" value="@Model.questao.OpcD"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">E</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" placeholder="Opção E" name="opcE" value="@Model.questao.OpcE"></textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Oção correta </label>
+        <div class="col-sm-6">
+            <select class="form-control" id="filtro-data" name="resposta_correta" value="@Model.questao.RespostaCorreta">
+                <option value="">Selecione uma Prova</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-danger" href="/User" role="button">Cancelar</a>
+        </div>
+    </div>  
+
+
+
+
+</form>
+
+
+@if (Model.successMessage.Length > 0)
+{
+
+
+
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-success alert-dimissible fade show" role="alert">
+                <strong>@Model.successMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            Swal.fire({
+                title: 'Questão Cadastrada...',
+                icon: 'success',
+                timer: 3000,
+                timerProgressBar: true
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
+                    window.location.replace('/User/Create');
+                }
+            });
+        }, 100);
+    </script>
+}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
