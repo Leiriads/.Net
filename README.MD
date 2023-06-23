@@ -1,12 +1,12 @@
 # .Net
 
-:books: Contato-Tron é um app para gerenciar seus contatos <br> <br>
+:books: MVC IFPR é uma aplicação Web que utiliza o MVC (Model-View-Controller), sendo um padrão de arquitetura de software que gerencia os Usuários do Campus <br> <br>
 🌿 Tecnologias Utilizadas :<br>
 🌿 C#  <br>
 🌿 HTML <br>
 🌿 Bootstrap  <br>
 🌿 .Net  <br>
-🌿 SQL
+🌿 MySQL
 
 
 :sparkles: Add Botões na aba Contatos
